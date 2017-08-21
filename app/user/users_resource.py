@@ -15,12 +15,8 @@ pagination = users_ns.model('A page of results', {
 user = users_ns.model('User', {
     'id': fields.String(required=False, description='The user identifier'),
     'username': fields.String(required=True, description='The username'),
-    'password': fields.String(required=True, description='The user password'),
-}, mask='{id, username}')
-
-USERS = [
-    {'id': 'felix', 'username': 'Felix', 'password':'hashpass'},
-]
+    'email': fields.String(required=True, description='The email'),
+})
 
 page_of_users = users_ns.inherit('Page of users', pagination, {
     'users': fields.List(fields.Nested(user))

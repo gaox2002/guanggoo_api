@@ -2,7 +2,19 @@
 REST APIs for content management
 
 ## Start
-Start server
+
+### initialize database
+init database by 
+```shell
+./manage.py db init 
+```
+it generates migrate folder as migrations, then run
+```perl
+./manage.py db upgrade
+```
+to create/update the tables
+
+### Start server
 ```python
 ./manage.py runserver
 ```
