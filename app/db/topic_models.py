@@ -8,6 +8,7 @@ class Topic(db.Model):
     title = db.Column(db.String(80), nullable=False)
     content = db.Column(db.Text(), nullable=False)
     create_time = db.Column(db.DateTime, default=datetime.now())
+    user_id = db.Column(db.String(128), db.ForeignKey('user.id'), nullable=False)
 
     db.relationship('Comment', backref='topic', order_by='Comment.create_time')
 
