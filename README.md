@@ -22,6 +22,6 @@ to create/update the tables
 
 ### Roadmap
 * 公众号
-** 自动答复（推荐）
-** 周报？
-** 新闻
+* 自动答复（推荐）
+* 周报
+* 新闻
