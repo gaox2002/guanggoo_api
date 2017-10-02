@@ -18,3 +18,10 @@ to create/update the tables
 ```python
 ./manage.py runserver
 ```
+
+
+### Roadmap
+* 公众号
+** 自动答复（推荐）
+** 周报？
+** 新闻
