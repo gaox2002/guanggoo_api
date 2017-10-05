@@ -24,7 +24,10 @@ to create/update the tables
 * 用户
   * 注册
   * 登录
+  * email确认
+  * 密码找回
   * 第三方
+  * -- 短信确认
 * 贴子
   * 回贴
   * 搜索
