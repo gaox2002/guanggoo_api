@@ -1,18 +1,22 @@
 from flask import Flask, Blueprint
 from flask_mail import Mail
 from flask_moment import Moment
-from flask_restplus import Api
-from flask_sqlalchemy import SQLAlchemy
 
 from .db import db
-from .user import api
 from .user.user_resource import user_ns
 from .user.users_resource import users_ns
 from .topic.topic_resource import topic_ns
 from .config import config
+from flask_restplus import Api
+
+
+api = Api(version='1.0', title='User API',
+          description='APIs for User operation')
+
 
 mail = Mail()
 moment = Moment()
+
 
 def create_app(config_name):
     app = Flask(__name__)
