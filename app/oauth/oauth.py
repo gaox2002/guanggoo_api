@@ -1,19 +1,4 @@
-from app import db
-
-
-class User(db.Model):
-    __tablename__ = 'user'
-    id = db.Column(db.String(128), primary_key=True)
-    username = db.Column(db.String(40), unique=True)
-    nickname = db.Column(db.String(50), unique=False)
-    email = db.Column(db.String(128), unique=True)
-    password = db.Column(db.String(40))
-    profile_id = db.Column(
-        db.String(64), db.ForeignKey('profile.id', ondelete='CASCADE')
-    )
-    profile = db.relationship('Profile', backref = 'user', lazy='joined')
-    topics = db.relationship('Topic', backref = 'user', lazy='select')
-    comments = db.relationship('Comment', backref = 'user', lazy='select')
+from .. import db
 
 
 # OAuth2 models
@@ -110,14 +95,4 @@ class Token(db.Model):
         if self._scopes:
             return self._scopes.split()
         return []
-
-
-# information about user
-class Profile(db.Model):
-    __tablename__ = 'profile'
-    id = db.Column(db.String(64), primary_key=True)
-    first_name = db.Column(db.String(64))
-    middle_name = db.Column(db.String(20))
-    last_name = db.Column(db.String(64))
-    gendar = db.Column(db.String(1))
 

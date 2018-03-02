@@ -14,7 +14,7 @@ if os.path.exists('.env'):
             os.environ[var[0]] = var[1]
 
 from app import create_app, db
-from app.db.user_models import User
+from app.user_models import User
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 

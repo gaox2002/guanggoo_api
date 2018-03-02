@@ -1,8 +1,5 @@
-from flask import abort, request
 from flask_restplus import Namespace
 from flask_restplus import Resource, fields
-
-from app.db.topic_models import Topic, Comment
 
 topic_ns = Namespace('topics', description='Topic related operations')
 

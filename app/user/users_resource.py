@@ -1,6 +1,6 @@
 from flask_restplus import Namespace
 from flask_restplus import Resource, fields
-from ..db.user_dao import get_all_user
+from app.user.user_dao import get_all_user
 
 
 users_ns = Namespace('users', description='Users related operations')

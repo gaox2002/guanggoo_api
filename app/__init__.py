@@ -1,8 +1,10 @@
 from flask import Flask, Blueprint
 from flask_mail import Mail
 from flask_moment import Moment
+from flask_sqlalchemy import SQLAlchemy
+from flask_security import SQLAlchemyUserDatastore, Security
 
-from .db import db
+from app.user_models import User, Role
 from .user.user_resource import user_ns
 from .user.users_resource import users_ns
 from .topic.topic_resource import topic_ns
@@ -10,11 +12,12 @@ from .config import config
 from flask_restplus import Api
 
 
-api = Api(version='1.0', title='User API',
-          description='APIs for User operation')
+api = Api(version='1.0', title='guanggoo API',
+          description='APIs for guanggoo CMS')
 
 
 mail = Mail()
+db = SQLAlchemy()
 moment = Moment()
 
 
@@ -33,6 +36,9 @@ def create_app(config_name):
     mail.init_app(app)
     moment.init_app(app)
     db.init_app(app)
+
+    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    security = Security(app, user_datastore)
 
     if not app.debug and not app.testing and not app.config['SSL_DISABLE']:
         from flask_sslify import SSLify

@@ -4,8 +4,8 @@ from flask_restplus import Resource, fields
 
 import uuid
 
-from ..db.user_dao import create_user, get_user
-from ..db.user_models import User, Profile
+from app.user.user_dao import create_user, get_user
+from app.user_models import User
 
 user_ns = Namespace('user', description='Users related operations')
 
