@@ -1,7 +1,8 @@
 from .. import db
 
 
-# OAuth2 models
+# OAuth2 models, may not be used now
+# use jwt instead
 class Client(db.Model):
     __tablename__ = 'client'
     client_id = db.Column(db.String(40), primary_key=True)

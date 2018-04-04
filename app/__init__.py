@@ -10,6 +10,7 @@ from .user.users_resource import users_ns
 from .topic.topic_resource import topic_ns
 from .config import config
 from flask_restplus import Api
+from flask_jwt import JWT
 
 
 api = Api(version='1.0', title='guanggoo API',
@@ -19,7 +20,7 @@ api = Api(version='1.0', title='guanggoo API',
 mail = Mail()
 db = SQLAlchemy()
 moment = Moment()
-
+jwt = JWT()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -36,6 +37,7 @@ def create_app(config_name):
     mail.init_app(app)
     moment.init_app(app)
     db.init_app(app)
+    jwt.init_app(app)
 
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security = Security(app, user_datastore)

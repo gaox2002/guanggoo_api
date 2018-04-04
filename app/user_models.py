@@ -10,10 +10,11 @@ roles_users = db.Table('roles_users',
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.String(128), primary_key=True)
-    username = db.Column(db.String(40), unique=True)
+    username = db.Column(db.String(40), unique=True, index=True)
     nickname = db.Column(db.String(50), unique=False)
-    email = db.Column(db.String(128), unique=True)
-    password = db.Column(db.String(40))
+    email = db.Column(db.String(128), unique=True, index=True)
+    password = db.Column(db.String(128))
+    guid = db.Column(db.String(256), unique=True, index=True)
     active = db.Column(db.Boolean())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
@@ -37,5 +38,5 @@ class Profile(db.Model):
     first_name = db.Column(db.String(64))
     middle_name = db.Column(db.String(20))
     last_name = db.Column(db.String(64))
-    gendar = db.Column(db.String(1))
+    gender = db.Column(db.String(1))
 

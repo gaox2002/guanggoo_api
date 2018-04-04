@@ -1,5 +1,6 @@
 from flask_restplus import Namespace
 from flask_restplus import Resource, fields
+from flask_jwt import jwt_required
 
 topic_ns = Namespace('topics', description='Topic related operations')
 
@@ -20,3 +21,9 @@ class TopicList(Resource):
     @topic_ns.marshal_list_with(topic)
     def get(self):
         return TOPICS
+
+    @topic_ns.doc('topic')
+    @topic_ns.marshal(topic)
+    @jwt_required
+    def post(self):
+        pass

@@ -8,9 +8,13 @@ def create_user(user):
     db.session.commit()
 
 
+def check_username(username):
+    return User.query.filter_by(email=username).count()
+
+
 def get_user(id):
     if re.match(r"[^@]+@[^@]+\.[^@]+", id):
-        return User.query.get(id)
+        return User.query.filter_by(email=id).first()
     else:
         return User.query.get(id)
 
