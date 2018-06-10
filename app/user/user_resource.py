@@ -43,7 +43,7 @@ class UserResource(Resource):
             abort(404, 'No user found')
 
 
-@user_ns.route('')
+@user_ns.route('/')
 class UserCreate(Resource):
 
     @user_ns.doc('create_user')

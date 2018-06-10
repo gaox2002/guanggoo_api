@@ -16,6 +16,7 @@ user = users_ns.model('User', {
     'id': fields.String(required=False, description='The user identifier'),
     'username': fields.String(required=True, description='The username'),
     'email': fields.String(required=True, description='The email'),
+    "password": fields.String(required=True, description='The password')
 })
 
 page_of_users = users_ns.inherit('Page of users', pagination, {

@@ -5,12 +5,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_security import SQLAlchemyUserDatastore, Security
 
 from app.user_models import User, Role
+from .auth.jwt import token_ns
 from .user.user_resource import user_ns
 from .user.users_resource import users_ns
 from .topic.topic_resource import topic_ns
 from .config import config
 from flask_restplus import Api
-from flask_jwt import JWT
+from flask_jwt_extended import JWTManager
 
 
 api = Api(version='1.0', title='guanggoo API',
@@ -20,7 +21,7 @@ api = Api(version='1.0', title='guanggoo API',
 mail = Mail()
 db = SQLAlchemy()
 moment = Moment()
-jwt = JWT()
+jwt = JWTManager()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -29,6 +30,7 @@ def create_app(config_name):
 
     blueprint = Blueprint('api', __name__, url_prefix='/api')
     api.init_app(blueprint)
+    api.add_namespace(token_ns)
     api.add_namespace(user_ns)
     api.add_namespace(users_ns)
     api.add_namespace(topic_ns)
