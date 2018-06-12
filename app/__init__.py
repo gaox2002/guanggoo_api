@@ -4,7 +4,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import SQLAlchemyUserDatastore, Security
 
-from app.user_models import User, Role
+from .user_models import User, Role
 from .auth.jwt import token_ns
 from .user.user_resource import user_ns
 from .user.users_resource import users_ns
